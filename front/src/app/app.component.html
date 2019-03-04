@@ -5,11 +5,16 @@
         <a [routerLink]="[ '/funcionario/create' ]" routerLinkActive="active" class="nav-link">Adicionar Funcionário</a>
       </li>
       <li class="nav-item">
-        <a [routerLink]="[ '/funcionario' ]" routerLinkActive="active" class="nav-link">Listar Funcionário</a>
+        <a [routerLink]="[ '/funcionario' ]" 
+        routerLinkActive="active" 
+        class="nav-link"
+        (click)="expression">Listar Funcionário</a>
       </li>
     </ul>
   </div>
 </nav>
+
+<ng2-slim-loading-bar color="green" height="5px"></ng2-slim-loading-bar>
 
 <div class="container">
   <router-outlet></router-outlet>
