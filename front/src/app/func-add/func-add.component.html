@@ -1,21 +1,53 @@
 <div class="card">
   <div class="card-body">
-    <form>
+    <form [formGroup]="adicionarFuncionarioForm">
       <div class="col-md-6 col-md-offset-3">
         <div class="form-group">
           <label>Nome</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" formControlName="nomeFuncionario">
         </div>
+        <div *ngIf="adicionarFuncionarioForm.controls['nomeFuncionario'].invalid
+              && (adicionarFuncionarioForm.controls['nomeFuncionario'].dirty
+              || adicionarFuncionarioForm.controls['nomeFuncionario'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="adicionarFuncionarioForm.controls['nomeFuncionario'].errors.required">
+            O campo nome é obrigatório.
+          </div>
+        </div>
+
         <div class="form-group">
           <label>Cargo</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" formControlName="cargo">
         </div>
+        <div *ngIf="adicionarFuncionarioForm.controls['cargo'].invalid
+              && (adicionarFuncionarioForm.controls['cargo'].dirty
+              || adicionarFuncionarioForm.controls['cargo'].touched)"
+          class="alert alert-danger">
+          <div>
+            O campo Cargo é obrigatório.
+          </div>
+        </div>
+
         <div class="form-group">
           <label>Identificação</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" formControlName="numeroidentificador">
         </div>
+        <div *ngIf="adicionarFuncionarioForm.controls['numeroidentificador'].invalid
+              && (adicionarFuncionarioForm.controls['numeroidentificador'].dirty
+              || adicionarFuncionarioForm.controls['numeroidentificador'].touched)"
+          class="alert alert-danger">
+          <div>
+            O campo Indentificação é obrigatório.
+          </div>
+        </div>
+
         <div class="form-group">
-          <button type="submit" class="btn btn-primary"><fa name="plus-circle"></fa> Funcionário</button>
+          <button type="submit"
+                  class="btn btn-primary"
+                  [disabled]="adicionarFuncionarioForm.pristine
+                  || adicionarFuncionarioForm.invalid">
+            <fa name="plus-circle"></fa> Funcionário
+          </button>
         </div>
       </div>
     </form>
